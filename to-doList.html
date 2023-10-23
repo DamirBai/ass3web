@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        body{
+            font-family: 'Comic Sans MS', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="to-do_list.css">
+</head>
+<body>
+<div id="myDIV" class="header">
+    <h2 style="margin:5px">My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Example: choose CPU">
+    <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+    <li>choose CPU</li>
+    <li class="checked">be a good guy</li>
+    <li>choose RAM</li>
+    <li>choose ROM</li>
+    <li>choose video card</li>
+</ul>
+<script src="TODO.js"></script>
+</body>
+</html>
