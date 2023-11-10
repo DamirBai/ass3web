@@ -1,52 +1,55 @@
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    myNodelist[i].appendChild(span);
-}
+let input = document.getElementById("inputText");
+let list= document.getElementById("list");
+let minimalValue = 3;
+let listNum = 0;
+addList=()=>{
+    // get
+    let inputText = filterList(input.value);
+    // set
+    if (inputText) {
+        list.innerHTML += `<li class=" my-3 py-3 shadow list-group-item " id="list${listNum}">
+            <span class=" h4" id="text${listNum}"> ${inputText} </span>
+            <input class="" type="checkbox" id="check${listNum}" onclick="done(${listNum})">
+            <button class=" btn btn-dark" onclick="deleteList(${listNum})">Delete</button>
+                </li> `;
+        input.value=" ";
+        listNum++;
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
     }
 }
-
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-    if (ev.target.tagName === 'LI') {
-        ev.target.classList.toggle('checked');
+done=(listId)=>{
+    let checkbox = document.getElementById(`check${listId}`);
+    let current = document.getElementById(`text${listId}`);
+    let classExit=current.classList.contains("text-decoration-line-through");
+    if (classExit == true) {
+        current.classList.remove("text-decoration-line-through");
+    }else{
+        current.classList.add("text-decoration-line-through");
     }
-}, false);
 
-function newElement() {
-    var li = document.createElement("li");
-    var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
-    if (inputValue === '') {
-        alert("You must write something!");
-    } else {
-        document.getElementById("myUL").appendChild(li);
-    }
-    document.getElementById("myInput").value = "";
-
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
-
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.display = "none";
+}
+filterList=(x)=>{
+    if (x) {
+        if (x.length >= minimalValue) {
+            return x;
+        }
+        else{
+            alert("Please enter more than 3 words")
         }
     }
+    else{
+        return false;
+    }
 }
+deleteList=(listId)=>{
+    let current = document.getElementById(`text${listId}`).innerHTML;
+    let deleteComfirm = confirm(`Are you sure to delete ${current}`);
+    if (deleteComfirm) {
+        let p = document.getElementById("list")
+        let c = document.getElementById(`list${listId}`);
+        p.removeChild(c);
+    }
+    else{
+        console.log("deleted");
+    }
+};

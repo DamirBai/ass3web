@@ -19,6 +19,24 @@
         font-family: 'Comic Sans MS', sans-serif;
     }
 </style>
+<script>
+    let id = null;
+    function myMove() {
+        let elem = document.getElementById("myAnimation");
+        let pos = 0;
+        clearInterval(id);
+        id = setInterval(frame, 10);
+        function frame() {
+            if (pos == 350) {
+                clearInterval(id);
+            } else {
+                pos++;
+                elem.style.top = pos + 'px';
+                elem.style.left = pos + 'px';
+            }
+        }
+    }
+</script>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
@@ -33,7 +51,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Configurator</a>
+                    <a class="nav-link" href="configurator.html">Configurator</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shops.html">Shops</a>

@@ -32,7 +32,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Configurator</a>
+                    <a class="nav-link" href="configurator.html">Configurator</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shops.html">Shops</a>
@@ -58,6 +58,20 @@
 </nav>
 <div class="container">
     <h1>Thanks for your feedback!</h1>
+    <img style="position: relative; cursor: pointer" width="20%" id="msg" src="https://static.vecteezy.com/system/resources/previews/020/009/601/original/email-and-mail-icon-black-free-png.png" alt="mail">
+    <script>
+        msg.onclick = function() {
+            let start = Date.now();
+            let ding = new Audio("ding.mp3")
+            let timer = setInterval(function() {
+                let timePassed = Date.now() - start;
+                msg.style.left = timePassed / 5 + 'px';
+                if (timePassed > 6000) ding.play();
+                if (timePassed > 6100) ding.pause();
+                if (timePassed > 7000) clearInterval(timer);
+            }, 20);
+        }
+    </script>
 </div>
 
 </body>
